@@ -2,7 +2,7 @@
 
 namespace Slab\Tests\Cache\Mocks;
 
-class Provider implements \Slab\Cache\Providers\ProviderInterface
+class Provider implements \Slab\Components\Cache\ProviderInterface
 {
     /**
      * Get a key from cache

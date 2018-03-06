@@ -46,12 +46,13 @@ class Predis extends Base
      */
     public function connect($host = 'localhost', $port = 6379, $scheme = 'tcp', $persistent = true)
     {
-        if (!class_exists('\Predis\Client'))
+        $predisClient = '\Predis\Client';
+        if (!class_exists($predisClient))
         {
             throw new \Exception("You must include the predis library to use this cache provider.");
         }
 
-        $this->predis = new \Predis\Client([
+        $this->predis = new $predisClient([
             'host' => $host,
             'port' => $port,
             'scheme' => $scheme,

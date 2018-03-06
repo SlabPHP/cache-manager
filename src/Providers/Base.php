@@ -8,7 +8,7 @@
  */
 namespace Slab\Cache\Providers;
 
-abstract class Base implements ProviderInterface
+abstract class Base implements \Slab\Components\Cache\ProviderInterface
 {
     /**
      * Key suffix

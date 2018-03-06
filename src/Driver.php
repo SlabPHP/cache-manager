@@ -10,12 +10,12 @@
  */
 namespace Slab\Cache;
 
-class Driver
+class Driver implements \Slab\Components\Cache\DriverInterface
 {
     /**
      * Cache Provider Object
      *
-     * @var \Slab\Cache\Providers\ProviderInterface
+     * @var \Slab\Components\Cache\ProviderInterface
      */
     private $cacheProvider = NULL;
 
@@ -25,10 +25,10 @@ class Driver
     private $log;
 
     /**
-     * @param Providers\ProviderInterface $provider
+     * @param \Slab\Components\Cache\ProviderInterface $provider
      * @return $this
      */
-    public function setProvider(Providers\ProviderInterface $provider)
+    public function setProvider(\Slab\Components\Cache\ProviderInterface $provider)
     {
         $this->cacheProvider = $provider;
 
@@ -106,7 +106,7 @@ class Driver
     /**
      * Return the cache provider
      *
-     * @return \Slab\Cache\Providers\Base
+     * @return \Slab\Components\Cache\ProviderInterface
      */
     public function getProvider()
     {
@@ -129,7 +129,7 @@ class Driver
      * @param Request $request
      * @return mixed
      */
-    public function execute(Request $request)
+    public function execute($request)
     {
         if (!$this->requireProvider("Executing cache request")) return null;
 
