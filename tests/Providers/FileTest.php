@@ -17,7 +17,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
      */
     public function testProvider()
     {
-        $cacheDir = __DIR__ . '/../cache-tmp/';
+        $cacheDir = '/tmp/';
 
         $fileProvider = new \Slab\Cache\Providers\File();
 
@@ -31,5 +31,16 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileProvider->delete('thing');
 
         $this->assertFileNotExists($cacheDir . 'thing~' . php_sapi_name());
+    }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testInvalidDirectory()
+    {
+        $fileProvider = new \Slab\Cache\Providers\File();
+
+        $fileProvider
+            ->setCacheDirectory('/blargh/frufru32 asdf');
     }
 }
